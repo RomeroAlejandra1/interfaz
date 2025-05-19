@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 
-def saludo():
+def inicio():
     area_dinamica_limpia()
     tk.Label(area_dinamica, text="Aquí va un mensaje de bienvenida", font=("Arial", 14)).pack(pady=10)
     tk.Button(area_dinamica, text="Mostrar mensaje de bienvenida", command=lambda: messagebox.showinfo("Título", "Buenos dias")).pack()
@@ -33,7 +33,7 @@ def alumno():
 
 def color():
     area_dinamica_limpia()
-    tk.Label(area_dinamica, text="Cambio de color", font=("Arial", 14)).pack(pady=10)
+    tk.Label(area_dinamica, text="Configuraciones temporales", font=("Arial", 14)).pack(pady=10)
 
     colores = ["lightblue", "lightgreen", "lightyellow", "lightgray"]
     tk.Label(area_dinamica, text="Cambiar fondo:").pack()
@@ -46,7 +46,7 @@ def color():
     for c in colores:
         tk.Button(area_dinamica, text=c, bg=c, width=20, command=lambda col=c: cambiar_color(col)).pack(pady=2)
 
-def Cuestionario():
+def cuestionario():
     area_dinamica_limpia()
     tk.Label(area_dinamica, text="Texto de ayuda que el alumno debe mejorar", font=("Arial", 14)).pack(pady=10)
     contenido = (
@@ -64,7 +64,7 @@ def area_dinamica_limpia():
 
 ventana_principal = tk.Tk()
 ventana_principal.title("Interfaz para prácticas")
-ventana_principal.geometry("700x600")
+ventana_principal.geometry("500x400")
 ventana_principal.config(bg="lightblue")
 
 menu_lateral = tk.Frame(ventana_principal, bg="lightblue", width=120)
@@ -73,11 +73,11 @@ menu_lateral.pack(side="left", fill="y")
 area_dinamica = tk.Frame(ventana_principal, bg="white")
 area_dinamica.pack(side="right", expand=True, fill="both")
 
-tk.Button(menu_lateral, text="Inicio", command=saludo, width=15).pack(pady=10)
+tk.Button(menu_lateral, text="Inicio", command=inicio, width=15).pack(pady=10)
 tk.Button(menu_lateral, text="Pantalla 2", command=alumno, width=15).pack(pady=10)
 tk.Button(menu_lateral, text="Pantalla 3", command=color, width=15).pack(pady=10)
-tk.Button(menu_lateral, text="Pantalla 4", command=Cuestionario, width=15).pack(pady=10)
+tk.Button(menu_lateral, text="Pantalla 4", command=cuestionario, width=15).pack(pady=10)
 tk.Button(menu_lateral, text="Salir", command=ventana_principal.destroy, width=15).pack(pady=30)
 
-saludo()
+inicio()
 ventana_principal.mainloop()
